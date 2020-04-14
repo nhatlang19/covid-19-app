@@ -1,5 +1,7 @@
 import 'package:covid19/bloc/country/country_bloc.dart';
 import 'package:covid19/bloc/country/country_event.dart';
+import 'package:covid19/bloc/map_country/map_country_bloc.dart';
+import 'package:covid19/bloc/map_country/map_country_event.dart';
 import 'package:covid19/widget/dashboard.dart';
 import 'package:covid19/widget/feeds.dart';
 import 'package:covid19/widget/show_map.dart';
@@ -39,7 +41,11 @@ class _MyHomePageState extends State<MyHomePage> {
           CountryBloc(httpClient: http.Client())..add(FetchGlobal()),
       child: Dashboard(),
     ),
-    ShowMap(),
+    BlocProvider(
+      create: (context) => MapCountryBloc(httpClient: http.Client())
+        ..add(FetchCountriesForMap()),
+      child: ShowMap(),
+    ),
     Feeds(),
   ];
 
