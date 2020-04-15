@@ -3,7 +3,6 @@ import 'package:covid19/bloc/country/country_event.dart';
 import 'package:covid19/bloc/map_country/map_country_bloc.dart';
 import 'package:covid19/bloc/map_country/map_country_event.dart';
 import 'package:covid19/widget/dashboard.dart';
-import 'package:covid19/widget/feeds.dart';
 import 'package:covid19/widget/show_map.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ..add(FetchCountriesForMap()),
       child: ShowMap(),
     ),
-    Feeds(),
   ];
 
   String _title(int index) {
@@ -55,8 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
         return "Dashboard";
       case 1:
         return 'Map';
-      case 2:
-        return 'Feeds';
       default:
         return "Dashboard";
     }
@@ -81,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
         tabs: [
           TabData(iconData: Icons.home, title: "Dashhboard"),
           TabData(iconData: Icons.map, title: "Show Map"),
-          TabData(iconData: Icons.announcement, title: "Feeds")
         ],
         onTabChangedListener: _onItemTapped,
       ),
